@@ -27,7 +27,7 @@ getTime :: IO Integer
 getTime = getPOSIXTime >>= \t -> return (floor (toRational t))
 
 twitterHeader :: ByteString
-twitterHeader = pack ("OAuth oauth_consumer_key=\"ytDrsZb2llyVvfbKOrcZbyA99\", oauth_nonce=\"bd57cfb9ff93b1a6d13e7eeb6ec5f099\", oauth_signature=\"%2Biw7YyWD8h0UEIa0O7Kx4aRvlh8%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"" + time  + "\", oauth_version=\"1.0\"")
+twitterHeader = pack ("OAuth oauth_consumer_key=\"ytDrsZb2llyVvfbKOrcZbyA99\", oauth_nonce=\"bd57cfb9ff93b1a6d13e7eeb6ec5f099\", oauth_signature=\"%2Biw7YyWD8h0UEIa0O7Kx4aRvlh8%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"" ++ time  ++ "\", oauth_version=\"1.0\"")
     where time = show $ unsafePerformIO getTime
 
 headers :: WS.Headers
